@@ -1,19 +1,12 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import { Input } from '../Input';
-import { LoginFormValidationRules } from './validationRules';
+import { LOGIN_FORM_VALIDATION_RULES } from './validationRules';
+import { ID, PASSWORD, ON_SUBMIT_MESSAGE } from './data';
 
 type LoginFormValues = {
   id: string;
   password: string;
 };
-
-const OnSubmitMessage = {
-  valid: '로그인 성공!',
-  invalid: '로그인 실패!',
-};
-
-const ID = 'form98';
-const Password = '7@2aD5$9Gt!f';
 
 export const LoginForm = () => {
   const loginFormMethods = useForm<LoginFormValues>({
@@ -29,13 +22,13 @@ export const LoginForm = () => {
   const handleLoginFormSubmit = handleSubmit(
     ({ id, password }: LoginFormValues) => {
       const isIDValid = id === ID;
-      const isPasswordValid = password === Password;
+      const isPasswordValid = password === PASSWORD;
       const isCredentialsValid = isIDValid && isPasswordValid;
 
       if (isCredentialsValid) {
-        alert(OnSubmitMessage.valid);
+        alert(ON_SUBMIT_MESSAGE.VALID);
       } else {
-        alert(OnSubmitMessage.invalid);
+        alert(ON_SUBMIT_MESSAGE.INVALID);
       }
     }
   );
@@ -60,19 +53,19 @@ export const LoginForm = () => {
             name="id"
             type="text"
             placeholder="ID"
-            required={LoginFormValidationRules.ID.required}
-            minLength={LoginFormValidationRules.ID.minLength}
-            maxLength={LoginFormValidationRules.ID.maxLength}
-            pattern={LoginFormValidationRules.ID.pattern}
+            required={LOGIN_FORM_VALIDATION_RULES.ID.required}
+            minLength={LOGIN_FORM_VALIDATION_RULES.ID.minLength}
+            maxLength={LOGIN_FORM_VALIDATION_RULES.ID.maxLength}
+            pattern={LOGIN_FORM_VALIDATION_RULES.ID.pattern}
           />
           <Input
             name="password"
             type="password"
             placeholder="Password"
-            required={LoginFormValidationRules.PASSWORD.required}
-            minLength={LoginFormValidationRules.PASSWORD.minLength}
-            maxLength={LoginFormValidationRules.PASSWORD.maxLength}
-            pattern={LoginFormValidationRules.PASSWORD.pattern}
+            required={LOGIN_FORM_VALIDATION_RULES.PASSWORD.required}
+            minLength={LOGIN_FORM_VALIDATION_RULES.PASSWORD.minLength}
+            maxLength={LOGIN_FORM_VALIDATION_RULES.PASSWORD.maxLength}
+            pattern={LOGIN_FORM_VALIDATION_RULES.PASSWORD.pattern}
           />
         </div>
         <input type="submit" value={'로그인'} />
