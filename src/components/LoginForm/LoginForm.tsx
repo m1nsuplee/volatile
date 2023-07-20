@@ -71,6 +71,7 @@ export const LoginForm = () => {
             placeholder="Password"
             required={LoginFormValidationRules.PASSWORD.required}
             minLength={LoginFormValidationRules.PASSWORD.minLength}
+            maxLength={LoginFormValidationRules.PASSWORD.maxLength}
             pattern={LoginFormValidationRules.PASSWORD.pattern}
           />
         </div>
