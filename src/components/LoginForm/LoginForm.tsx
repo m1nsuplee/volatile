@@ -3,16 +3,7 @@ import { Input } from '../Input';
 import { LOGIN_FORM_VALIDATION_RULES } from './validationRules';
 import { ON_SUBMIT_MESSAGE } from './data';
 import axios, { AxiosError } from 'axios';
-
-type LoginFormValues = {
-  id: string;
-  password: string;
-};
-
-type LoginResponse = {
-  id: string;
-  password: string;
-};
+import { LoginFormValues, LoginResponse } from './models';
 
 export const LoginForm = () => {
   const loginFormMethods = useForm<LoginFormValues>({
