@@ -1,11 +1,4 @@
-import { RegisterOptions } from 'react-hook-form';
-
-type Field = 'ID' | 'PASSWORD';
-
-type LoginFormRegisterOptions = Pick<
-  RegisterOptions,
-  'maxLength' | 'minLength' | 'required' | 'pattern'
->;
+import { Field, LoginFormRegisterOptions } from './models';
 
 export const LOGIN_FORM_VALIDATION_RULES: Record<
   Field,
