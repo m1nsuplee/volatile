@@ -2,8 +2,9 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Input } from '../Input';
 import { LOGIN_FORM_VALIDATION_RULES } from './validationRules';
 import { ON_SUBMIT_MESSAGE } from './data';
-import axios, { AxiosError } from 'axios';
-import { LoginFormValues, LoginResponse } from './models';
+import { AxiosError } from 'axios';
+import { LoginFormValues } from './models';
+import { login } from './service';
 
 export const LoginForm = () => {
   const loginFormMethods = useForm<LoginFormValues>({
@@ -19,10 +20,7 @@ export const LoginForm = () => {
   const handleLoginFormSubmit = handleSubmit(
     async ({ id, password }: LoginFormValues) => {
       try {
-        const { status } = await axios.post<LoginResponse>('/login', {
-          id,
-          password,
-        });
+        const status = await login({ id, password });
 
         alert(ON_SUBMIT_MESSAGE[status]);
       } catch (error) {

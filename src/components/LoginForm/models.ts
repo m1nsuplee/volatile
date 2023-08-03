@@ -5,6 +5,8 @@ export type LoginFormValues = {
   password: string;
 };
 
+export type LoginRequest = LoginFormValues;
+
 export type LoginResponse = {
   id: string;
   password: string;
