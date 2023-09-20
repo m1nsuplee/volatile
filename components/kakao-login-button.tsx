@@ -3,6 +3,7 @@
 import KakaoSymbol from '@/assets/kakao-symbol.svg';
 import { Database } from '@/types/db';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import clsx from 'clsx';
 
 export function KakaoLoginButton() {
   const authService = createClientComponentClient<Database>({
@@ -26,7 +27,10 @@ export function KakaoLoginButton() {
     <button
       id="kakao-login-button"
       type="button"
-      className="w-52 h-10 bg-[#FEE500] rounded text-[#191919] flex justify-center items-center tracking-tighter gap-x-2"
+      className={clsx(
+        'w-52 h-10 bg-[#FEE500] rounded text-[#191919]',
+        'flex justify-center items-center tracking-tighter gap-x-2'
+      )}
       onClick={handleKakaoLoginButtonClick}
     >
       <KakaoSymbol />
