@@ -9,72 +9,36 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      categories: {
+      todos: {
         Row: {
           id: number;
-          name: string;
+          inserted_at: string;
+          is_complete: boolean | null;
+          task: string | null;
+          user_id: string;
         };
         Insert: {
-          id?: never;
-          name: string;
+          id?: number;
+          inserted_at?: string;
+          is_complete?: boolean | null;
+          task?: string | null;
+          user_id: string;
         };
         Update: {
-          id?: never;
-          name?: string;
-        };
-        Relationships: [];
-      };
-      task_categories: {
-        Row: {
-          category_id: number;
-          task_id: number;
-        };
-        Insert: {
-          category_id: number;
-          task_id: number;
-        };
-        Update: {
-          category_id?: number;
-          task_id?: number;
+          id?: number;
+          inserted_at?: string;
+          is_complete?: boolean | null;
+          task?: string | null;
+          user_id?: string;
         };
         Relationships: [
           {
-            foreignKeyName: 'task_categories_category_id_fkey';
-            columns: ['category_id'];
-            referencedRelation: 'categories';
-            referencedColumns: ['id'];
-          },
-          {
-            foreignKeyName: 'task_categories_task_id_fkey';
-            columns: ['task_id'];
-            referencedRelation: 'tasks';
+            foreignKeyName: 'todos_user_id_fkey';
+            columns: ['user_id'];
+            referencedRelation: 'users';
             referencedColumns: ['id'];
           },
         ];
-      };
-      tasks: {
-        Row: {
-          completed: boolean | null;
-          description: string | null;
-          due_date: string | null;
-          id: number;
-          title: string;
-        };
-        Insert: {
-          completed?: boolean | null;
-          description?: string | null;
-          due_date?: string | null;
-          id?: never;
-          title: string;
-        };
-        Update: {
-          completed?: boolean | null;
-          description?: string | null;
-          due_date?: string | null;
-          id?: never;
-          title?: string;
-        };
-        Relationships: [];
       };
     };
     Views: {
