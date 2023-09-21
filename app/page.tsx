@@ -1,21 +1,9 @@
 import { Pathname } from '@/lib/constants';
-import { Database } from '@/types/db';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+import { auth } from '@/services/auth';
 import { redirect } from 'next/navigation';
 
 export default async function Home() {
-  const authService = createServerComponentClient<Database>(
-    { cookies },
-    {
-      supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
-      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-    }
-  ).auth;
-
-  const {
-    data: { session },
-  } = await authService.getSession();
+  const { session } = await auth();
 
   if (!session) {
     redirect(Pathname.LOGIN_PAGE);
