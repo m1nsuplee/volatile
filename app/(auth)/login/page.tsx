@@ -1,3 +1,4 @@
+import { KakaoLoginButton } from '@/components/kakao-login-button';
 import { Pathname } from '@/lib/constants';
 import { Database } from '@/types/db';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
@@ -14,17 +15,26 @@ export default async function Home() {
   ).auth;
 
   const {
-    data: { session },
-  } = await authService.getSession();
+    data: { user },
+  } = await authService.getUser();
 
-  if (!session) {
-    redirect(Pathname.LOGIN_PAGE);
+  if (user) {
+    redirect(Pathname.HOME_PAGE);
   }
 
   return (
     <main
-      id="home-main"
+      id="login-main"
       className="min-h-screen w-screen flex justify-center items-center"
-    ></main>
+    >
+      <section>
+        <header className="mb-4">
+          <h1 className="text-2xl font-bold text-center tracking-tighter">
+            로그인
+          </h1>
+        </header>
+        <KakaoLoginButton />
+      </section>
+    </main>
   );
 }

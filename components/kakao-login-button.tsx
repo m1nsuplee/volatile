@@ -1,9 +1,14 @@
 'use client';
 
 import KakaoSymbol from '@/assets/kakao-symbol.svg';
+import { Pathname } from '@/lib/constants';
 import { Database } from '@/types/db';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import clsx from 'clsx';
+
+const baseURL = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : 'http://localhost:3000';
 
 export function KakaoLoginButton() {
   const authService = createClientComponentClient<Database>({
@@ -15,6 +20,9 @@ export function KakaoLoginButton() {
     try {
       await authService.signInWithOAuth({
         provider: 'kakao',
+        options: {
+          redirectTo: `${baseURL}${Pathname.KAKAO_AUTH}`,
+        },
       });
     } catch (error) {
       if (error instanceof Error) {
