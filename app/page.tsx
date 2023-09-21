@@ -1,5 +1,5 @@
 import { Pathname } from '@/lib/constants';
-import { auth } from '@/services/auth';
+import { auth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
