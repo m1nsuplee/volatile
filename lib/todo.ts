@@ -33,3 +33,7 @@ export const toggleTodoStatus = async (todo: Todo) => {
     })
     .eq('id', todo.id);
 };
+
+export const deleteTodo = async (todoId: number) => {
+  return await service.from('todos').delete().eq('id', todoId).throwOnError();
+};

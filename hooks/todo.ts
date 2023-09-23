@@ -1,4 +1,4 @@
-import { addTodo, fetchTodos, toggleTodoStatus } from '@/lib/todo';
+import { addTodo, deleteTodo, fetchTodos, toggleTodoStatus } from '@/lib/todo';
 import { Todo } from '@/types';
 import {
   UseMutationOptions,
@@ -28,6 +28,14 @@ export const useToggleTodoStatus = (
   return useMutation({
     mutationKey: ['toggle-todo-status'],
     mutationFn: () => toggleTodoStatus(todo),
+    ...options,
+  });
+};
+
+export const useDeleteTodo = (todoId: number, options: UseMutationOptions) => {
+  return useMutation({
+    mutationKey: ['delete-todo', todoId],
+    mutationFn: () => deleteTodo(todoId),
     ...options,
   });
 };
