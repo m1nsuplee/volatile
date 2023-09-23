@@ -5,11 +5,11 @@ import clsx from 'clsx';
 import { TodoStatusCheckbox } from './todo-status-checkbox';
 import { TodoDeleteButton } from './todo-delete-button';
 
-interface TodoProps {
+interface TodoItemProps {
   todo: Todo;
 }
 
-export function TodoItem({ todo }: TodoProps) {
+export function TodoItem({ todo }: TodoItemProps) {
   return (
     <article
       id={`todo-${todo.id}`}
