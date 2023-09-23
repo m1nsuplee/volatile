@@ -1,7 +1,7 @@
 'use client';
 
 import { useFetchTodos } from '@/hooks/todo';
-import { Todo } from './todo';
+import { TodoItem } from './todo-item';
 
 interface TodoListProps {
   userId: string;
@@ -12,12 +12,14 @@ export function TodoList({ userId }: TodoListProps) {
 
   return (
     <ul id="to-do-list">
-      {todos?.map((todo) => (
-        <Todo
-          key={todo.id}
-          todo={todo}
-        />
-      ))}
+      {todos
+        ? todos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+            />
+          ))
+        : null}
     </ul>
   );
 }

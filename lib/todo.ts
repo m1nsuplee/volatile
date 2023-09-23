@@ -1,8 +1,6 @@
-import { Database } from '@/types/db';
+import { Database, Todo } from '@/types';
 import { supabaseKey, supabaseUrl } from './config';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-
-type Todo = Database['public']['Tables']['todos']['Row'];
 
 const service = createClientComponentClient<Database>({
   supabaseKey,

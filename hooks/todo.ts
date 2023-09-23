@@ -1,12 +1,10 @@
 import { addTodo, fetchTodos, toggleTodoStatus } from '@/lib/todo';
-import { Database } from '@/types/db';
+import { Todo } from '@/types';
 import {
   UseMutationOptions,
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-
-type Todo = Database['public']['Tables']['todos']['Row'];
 
 export const useFetchTodos = (userId: string) => {
   return useQuery({

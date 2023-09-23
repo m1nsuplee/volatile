@@ -1,7 +1,7 @@
 import { KakaoLoginButton } from '@/components/kakao-login-button';
 import { supabaseKey, supabaseUrl } from '@/lib/config';
 import { Pathname } from '@/lib/constants';
-import { Database } from '@/types/db';
+import { Database } from '@/types';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';

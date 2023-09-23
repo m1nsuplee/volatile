@@ -55,3 +55,5 @@ export interface Database {
     };
   };
 }
+
+export type Todo = Database['public']['Tables']['todos']['Row'];

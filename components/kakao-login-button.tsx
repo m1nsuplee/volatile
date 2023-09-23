@@ -3,7 +3,7 @@
 import KakaoSymbol from '@/assets/kakao-symbol.svg';
 import { supabaseKey, supabaseUrl } from '@/lib/config';
 import { Pathname } from '@/lib/constants';
-import { Database } from '@/types/db';
+import { Database } from '@/types';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import clsx from 'clsx';
 
