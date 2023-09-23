@@ -1,17 +1,15 @@
 'use client';
 
 import { useToggleTodoStatus } from '@/hooks/todo';
-import { Database } from '@/types/db';
+import { Todo } from '@/types';
 import { useQueryClient } from '@tanstack/react-query';
 import clsx from 'clsx';
-
-type Todo = Database['public']['Tables']['todos']['Row'];
 
 interface TodoProps {
   todo: Todo;
 }
 
-export function Todo({ todo }: TodoProps) {
+export function TodoItem({ todo }: TodoProps) {
   const queryClient = useQueryClient();
 
   const { mutate: toggleTodoStatus } = useToggleTodoStatus(todo, {
