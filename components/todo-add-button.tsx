@@ -1,18 +1,15 @@
 'use client';
 
 import { useAddTodo } from '@/hooks/todo';
-import { Session } from '@supabase/auth-helpers-nextjs';
 import { useQueryClient } from '@tanstack/react-query';
 import clsx from 'clsx';
 
 interface ToDoAddButtonProps {
-  session: Session;
+  userId: string;
 }
 
-export function TodoAddButton({ session }: ToDoAddButtonProps) {
+export function TodoAddButton({ userId }: ToDoAddButtonProps) {
   const queryClient = useQueryClient();
-
-  const { id: userId } = session.user;
 
   const { mutate: addTodo } = useAddTodo(userId, {
     onSuccess: () => queryClient.refetchQueries(['todos']),

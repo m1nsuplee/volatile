@@ -11,7 +11,10 @@ export function TodoList({ userId }: TodoListProps) {
   const { data: todos } = useFetchTodos(userId);
 
   return (
-    <ul id="to-do-list">
+    <ul
+      id="to-do-list"
+      className="max-w-md w-full"
+    >
       {todos
         ? todos.map((todo) => (
             <TodoItem
