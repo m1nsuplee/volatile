@@ -1,12 +1,25 @@
 import { KakaoLoginButton } from '@/components/kakao-login-button';
+import { supabaseKey, supabaseUrl } from '@/lib/config';
 import { Pathname } from '@/lib/constants';
-import { auth } from '@/lib/auth';
+import { Database } from '@/types';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const { user } = await auth();
+  const service = createServerComponentClient<Database>(
+    {
+      cookies,
+    },
+    {
+      supabaseKey,
+      supabaseUrl,
+    }
+  );
+
+  const { data: user } = await service.auth.getUser();
 
   if (user) {
     redirect(Pathname.HOME_PAGE);

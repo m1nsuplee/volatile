@@ -1,8 +1,9 @@
 'use client';
 
 import KakaoSymbol from '@/assets/kakao-symbol.svg';
+import { supabaseKey, supabaseUrl } from '@/lib/config';
 import { Pathname } from '@/lib/constants';
-import { Database } from '@/types/db';
+import { Database } from '@/types';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import clsx from 'clsx';
 
@@ -12,8 +13,8 @@ const baseURL = process.env.NEXT_PUBLIC_VERCEL_URL
 
 export function KakaoLoginButton() {
   const authService = createClientComponentClient<Database>({
-    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    supabaseUrl,
+    supabaseKey,
   }).auth;
 
   const handleKakaoLoginButtonClick = async () => {
