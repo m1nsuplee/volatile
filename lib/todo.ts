@@ -7,7 +7,7 @@ const service = createClientComponentClient<Database>({
   supabaseUrl,
 });
 
-export async function fetchTodos(userId: string) {
+export const fetchTodos = async (userId: string) => {
   const { data: todos } = await service
     .from('todos')
     .select('*', { count: 'exact' })
@@ -15,7 +15,7 @@ export async function fetchTodos(userId: string) {
     .order('id', { ascending: false });
 
   return todos;
-}
+};
 
 export const addTodo = async (userId: string) => {
   return await service.from('todos').insert({
