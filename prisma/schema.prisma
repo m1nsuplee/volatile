@@ -15,3 +15,8 @@ model Todo {
   title     String
   completed Boolean @default(false)
 }
+
+model Person {
+  id   Int    @id @default(autoincrement())
+  name String
+}
