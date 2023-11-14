@@ -17,7 +17,8 @@ model Todo {
 model Person {
   id   Int    @id @default(autoincrement())
   name String
-  height Int
+  height Int 
+  weight Int?
 }
 
 enum Priority {
