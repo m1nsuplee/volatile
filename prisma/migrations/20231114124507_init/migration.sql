@@ -6,3 +6,12 @@ CREATE TABLE "Todo" (
 
     CONSTRAINT "Todo_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateTable
+CREATE TABLE "Person" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "height" INTEGER NOT NULL,
+
+    CONSTRAINT "Person_pkey" PRIMARY KEY ("id")
+);

@@ -11,10 +11,19 @@ model Todo {
   id        Int     @id @default(autoincrement())
   title     String
   completed Boolean @default(false)
+  priority Priority @default(MEDIUM)
 }
 
 model Person {
   id   Int    @id @default(autoincrement())
   name String
-  height Int
+  height Int 
+  weight Int?
 }
+
+enum Priority {
+  HIGH
+  MEDIUM
+  LOW
+}
+
