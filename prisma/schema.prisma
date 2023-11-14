@@ -11,6 +11,7 @@ model Todo {
   id        Int     @id @default(autoincrement())
   title     String
   completed Boolean @default(false)
+  priority Priority @default(MEDIUM)
 }
 
 model Person {
@@ -18,3 +19,10 @@ model Person {
   name String
   height Int
 }
+
+enum Priority {
+  HIGH
+  MEDIUM
+  LOW
+}
+
